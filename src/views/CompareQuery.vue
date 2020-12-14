@@ -39,10 +39,11 @@
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
-            <th scope="col">Owner</th>
-            <th class="text-right">Amt.(From)</th>
-            <th class="text-right">Amt.(To)</th>
-            <th class="text-right">Amt.(Diff)</th>
+            <th><div class="d-flex"><div class="mr-auto">持股</div>数量</div></th>
+            <th class="text-right d-none">收益(之前)</th>
+            <th class="text-right">成本</th>
+            <th class="text-right">收益<br/>(累计)</th>
+            <th class="text-right">收益<br/>(区间)</th>
           </tr>
         </thead>
         <tbody>

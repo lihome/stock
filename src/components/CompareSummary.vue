@@ -1,14 +1,23 @@
 <template>
   <tr @click="toggleDetail(summary.owner)">
-    <td v-text="summary.owner"></td>
     <td>
-      <Profit :amt="summary.samt" />
+      <div class="d-flex">
+      <div class="mr-auto" v-text="summary.owner"></div>
+      (<Num8er :val="summary.eqty" digits="0" />)
+      </div>
+    </td>
+
+    <td class="d-none">
+      <Profit :amt="-summary.samt" />
     </td>
     <td>
-      <Profit :amt="summary.eamt" />
+      <Num8er :val="summary.ecost" />
     </td>
     <td>
-      <Profit :amt="summary.damt" />
+      <Profit :amt="-summary.eamt" />
+    </td>
+    <td>
+      <Profit :amt="-summary.damt" />
     </td>
   </tr>
   <tr :id="summary.owner" style="display:none;">
@@ -16,7 +25,7 @@
       <div class="card w-100 pb-2" v-for="(codeSummary, idx) in summary.ecodeList" :key="idx">
         <div class="card-header d-flex">
           <div class="mr-auto" v-text="codeSummary.code"></div>
-          <Profit :amt="codeSummary.amt"/>
+          <Profit :amt="-codeSummary.amt"/>
         </div>
         <div>
           <table class="table table-bordered">
@@ -34,7 +43,7 @@
                 <td class="small" v-text="trade.date"></td>
                 <td class="small"><Num8er :val="trade.qty" digits="0"/></td>
                 <td class="small"><Num8er :val="trade.price"/></td>
-                <td class="small"><Profit :amt="trade.amt"/></td>
+                <td class="small"><Num8er :val="trade.amt"/></td>
                 <td class="small" v-text="trade.remark"></td>
               </tr>
             </tbody>

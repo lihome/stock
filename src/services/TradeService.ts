@@ -62,6 +62,7 @@ class TradeService {
       compareSummary.scodeList = sOwnerSummary.codeList || [];
 
       compareSummary.eqty = eOwnerSummary.qty || 0;
+      compareSummary.ecost = eOwnerSummary.cost || 0;
       compareSummary.eamt = eOwnerSummary.amt || 0;
       compareSummary.ecodeList = eOwnerSummary.codeList || [];
       compareSummary.damt = compareSummary.eamt - compareSummary.samt;
@@ -86,6 +87,7 @@ class TradeService {
         ret[owner] = ownerSummary = <stock.OwnerSummary> {
           owner: owner,
           qty: 0,
+          cost: 0,
           amt: 0,
           remark: "",
           codeList: [],
@@ -93,6 +95,7 @@ class TradeService {
       }
       ownerSummary.qty += ownerCodeSummary.qty;
       ownerSummary.amt += ownerCodeSummary.amt;
+      ownerSummary.cost += ownerCodeSummary.cost;
       ownerSummary.codeList.push(ownerCodeSummary);
     }
     return ret;
@@ -133,16 +136,19 @@ class TradeService {
       ownerCodeSummary.code = code;
       ownerCodeSummary.qty = 0;
       ownerCodeSummary.price = currPrice;
+      ownerCodeSummary.cost = 0;
       ownerCodeSummary.amt = 0;
       ownerCodeSummary.tradeList = tradeList;
 
       for (const trade of tradeList) {
         ownerCodeSummary.qty += trade.qty;
+        ownerCodeSummary.cost += trade.amt;
         ownerCodeSummary.amt += trade.amt;
       }
 
       if (ownerCodeSummary.qty != 0) {
-        const amt = ownerCodeSummary.qty * currPrice * currTrend.rate
+        // 预估可卖出的金额
+        const amt = (-1) * ownerCodeSummary.qty * currPrice * currTrend.rate
         ownerCodeSummary.amt += amt;
 
         tradeList.push(<stock.Trade>{

@@ -38,6 +38,8 @@ declare namespace stock {
     qty: number;
     // 当前市场单价
     price: number;
+    // 成本;
+    cost: number;
     // 当前盈亏情况
     amt: number;
     // 备注
@@ -58,6 +60,8 @@ declare namespace stock {
     scodeList: OwnerCodeSummary[];
     // 截止 持股数量(股)
     eqty: number;
+    // 截止 成本
+    ecost: number;
     // 截止 盈亏情况
     eamt: number;
     // 截止 股票代码列表
@@ -72,6 +76,8 @@ declare namespace stock {
     owner: string;
     // 当前持股数量(股)
     qty: number,
+    // 成本
+    cost: number;
     // 当前盈亏情况
     amt: number;
     // 备注
