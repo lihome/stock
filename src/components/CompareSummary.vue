@@ -31,11 +31,11 @@
           <table class="table table-bordered">
             <thead class="thead-light">
               <tr>
-                <th style="min-width:98px;">Date</th>
-                <th class="text-right">Qty.</th>
-                <th class="text-right">Price<br>(HKD)</th>
-                <th class="text-right">Amt.<br>(RMB)</th>
-                <th class="">Mark</th>
+                <th style="min-width:98px;">日期</th>
+                <th class="text-right">数量</th>
+                <th class="text-right">单价<br>(HKD)</th>
+                <th class="text-right">金额<br>(RMB)</th>
+                <th class="">备注</th>
               </tr>
             </thead>
             <tbody>
