@@ -62,7 +62,7 @@ class TrendRepository {
       return this.cache;
     }
 
-    const body = await HttpUtil.simpleGet("data/trend.csv")
+    const body = await HttpUtil.simpleGet("data/trend.csv?t=" + Math.random())
 
     this.cache = this.parseData(body);
     this.initialized = true;
